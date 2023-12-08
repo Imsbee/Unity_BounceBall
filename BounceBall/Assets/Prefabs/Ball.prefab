@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: a7afa7533c3203b48ab027b65cb1ed99, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811e082a9ffcb104289f9e6f32cd8791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoJumpPower: 13
-  moveSpeed: 7
+  autoJumpPower: 12
+  moveSpeed: 4
   shootSpeed: 12
-  jumpBoostPower: 20
+  jumpBoostPower: 18
   fallGravity: 5
 --- !u!58 &3076529496860331951
 CircleCollider2D:
