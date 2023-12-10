@@ -124,14 +124,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6592364455961812321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811e082a9ffcb104289f9e6f32cd8791, type: 3}
+  m_Script: {fileID: 11500000, guid: 34ef132444e1eeb4ab1f3087aae7f63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoJumpPower: 12
+  autoJumpPower: 11
   moveSpeed: 4
   shootSpeed: 12
-  jumpBoostPower: 18
-  fallGravity: 5
+  jumpBoostPower: 17
 --- !u!58 &3076529496860331951
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1842,11 +1842,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mn
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6901548878701067375, guid: 11a434e0a4367dd44b485618dcd55fce, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6901548878701067376, guid: 11a434e0a4367dd44b485618dcd55fce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1087577892}
   m_SourcePrefab: {fileID: 100100000, guid: 11a434e0a4367dd44b485618dcd55fce, type: 3}
+--- !u!1 &1087577891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6901548878701067376, guid: 11a434e0a4367dd44b485618dcd55fce, type: 3}
+  m_PrefabInstance: {fileID: 1087577890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1087577892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087577891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa5a3908f9bae745976769abcb0f934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageNum: 2
+  ballPrefab: {fileID: 6592364455961812326, guid: 4c7165364d7a2904596e1d1769a5af96, type: 3}
+  starCount: 0
+  starNum: 0
+  disabledObj: []
 --- !u!1001 &1089339595
 PrefabInstance:
   m_ObjectHideFlags: 0

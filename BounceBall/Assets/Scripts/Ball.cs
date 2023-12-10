@@ -11,19 +11,18 @@ public class Ball : MonoBehaviour
     public float moveSpeed;
     public float shootSpeed;
     public float jumpBoostPower;
-    public float fallGravity;
     bool isShooting;
     string blockTag;
 
-    private void Awake()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        source = GetComponent<AudioSource>();
     }
 
     void Start()
     {
         blockTag = "";
-        source = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -34,7 +33,6 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
             {
                 ShootingOff();
@@ -45,9 +43,9 @@ public class Ball : MonoBehaviour
     void ShootingOn(Vector2 dir, Vector2 pos)
     {
         isShooting = true;
-        rb.gravityScale = 0;
-        transform.position = pos + dir;
-        rb.velocity = dir * shootSpeed;
+        rb.gravityScale = 0; // 공이 밑으로 추락 하면 안 되기 때문에 중력 값을 0으로 설정
+        transform.position = pos + dir; // 공의 위치를 충돌한 오브젝트의 바로 옆으로 설정
+        rb.velocity = dir * shootSpeed; // 공의 속도를 올려서 발사
     }
 
     void ShootingOff()
@@ -58,12 +56,12 @@ public class Ball : MonoBehaviour
 
     void Die()
     {
-        Mn.mn.BallDie();
+        GameManager.gameManager.BallDie();
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        ShootingOff();
+        ShootingOff(); // 오브젝트와 충돌하면 다시 원래 상태로 돌아와야 하기 때문에 호출
         if (col.gameObject.CompareTag("Dang")) Die(); // Ball과 충돌한 오브젝트가 Dang(외곽벽)이면 Die함수 호출
 
         Vector2 dir = col.transform.position - transform.position; // Ball과 충돌한 오브젝트까지의 방향 벡터 계산
@@ -88,7 +86,7 @@ public class Ball : MonoBehaviour
                     break;
                 case "Broken":
                     rb.velocity = new Vector2(rb.velocity.x, autoJumpPower);
-                    Mn.mn.DisableObj(col.gameObject);
+                    GameManager.gameManager.DisableObj(col.gameObject);
                     // Mn클래스의 함수를 이용해서 Broken 오브젝트 제거
                     source.Play();
                     break;
@@ -96,12 +94,6 @@ public class Ball : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, jumpBoostPower);
                     // x값은 유지하고 y값만 변경
                     source.Play();
-                    break;
-                case "Fall":
-                    rb.velocity = new Vector2(rb.velocity.x, autoJumpPower);
-                    // Fall 오브젝트의 물리력(?)을 활성화 하고 중력을 적용 시킴
-                    col.collider.GetComponent<Rigidbody2D>().isKinematic = false;
-                    col.collider.GetComponent<Rigidbody2D>().gravityScale = fallGravity;
                     break;
                 default:
                     break;
@@ -113,8 +105,8 @@ public class Ball : MonoBehaviour
     {
         if (col.CompareTag("Star"))
         {
-            Mn.mn.GetStar();
-            Mn.mn.DisableObj(col.transform.parent.gameObject);
+            GameManager.gameManager.GetStar();
+            GameManager.gameManager.DisableObj(col.transform.parent.gameObject);
         }
     }
 }
